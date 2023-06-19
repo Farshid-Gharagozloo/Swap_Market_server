@@ -23,7 +23,7 @@ function parseProductItem (info, exItems){
 }
 
 
-const getProductItems = async (req, res) =>{
+const getProductItem = async (req, res) =>{
 
     try {
         const productsInfo = await knex.raw('SELECT product_name, price, category_name, description, '+
@@ -41,6 +41,53 @@ const getProductItems = async (req, res) =>{
 
 }
 
+
+const editProductItem = async (req, res) => {
+    try {
+      const { id, user_id, exchangeable_items, category, description, price, name: product_name } = req.body;
+  
+      const productExist = await knex('product').where({ id });
+      if (productExist.length === 0) {
+        return res.status(400).send('Product ID does not exist');
+      }
+  
+      const userExist = await knex('user').where({ id: user_id });
+      if (userExist.length === 0) {
+        return res.status(400).send('User does not exist');
+      }
+
+      const grabCategoryId = await knex.raw(`SELECT id FROM category WHERE category_name = '${category}';`);
+      const category_id = grabCategoryId[0][0].id;
+  
+      let exchangeList = [];
+  
+      const updateProduct = await knex('product').where({ id }).update({ description, product_name, price, category_id });
+  
+      for (let i = 0; i < exchangeable_items.length; i++) {
+        const exNewItemUpdate = await knex.raw(`SELECT id FROM exchange_items WHERE item_name = '${exchangeable_items[i]}';`);
+        if (!exNewItemUpdate[0].length) {
+          const exNewItemAdd = await knex.raw(`INSERT INTO exchange_items (item_name) VALUES ('${exchangeable_items[i]}');`);
+          exNewItemUpdate = await knex.raw(`SELECT id FROM exchange_items WHERE item_name = '${exchangeable_items[i]}';`);
+        }
+
+        exchangeList.push(exNewItemUpdate[0][0].id);
+      }
+
+      const deleteLastExchange = await knex('exchange_list').where({ product_id: id }).del();
+
+      for (let i=0; i < exchangeList.length; i++){
+        const recoverExchangeList = await knex.raw(`INSERT INTO exchange_list (exchange_item_id, product_id) VALUES ('${exchangeList[i]}','${id}');`);
+      }
+  
+      return res.send('Successful');
+    } catch (error) {
+      return res.status(500).send('Error: No product found');
+    }
+
+};
+
+
 module.exports = {
-    getProductItems
+    getProductItem,
+    editProductItem
 }
