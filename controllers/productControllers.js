@@ -106,7 +106,7 @@ const addProductItem = async (req, res) => {
     }
 
     const lastItemId = await knex.raw('SELECT id FROM product ORDER BY id DESC LIMIT 1;');
-    console.log(lastItemId[0][0].id);
+    // console.log(lastItemId[0][0].id);
     const id = lastItemId[0][0].id;
 
     let exchangeList = [];
@@ -121,7 +121,7 @@ const addProductItem = async (req, res) => {
       }
     }
 
-    console.log(exchangeList);
+    // console.log(exchangeList);
 
     for (let i=0; i < exchangeList.length; i++){
       const addExchangeList = await knex.raw(`INSERT INTO exchange_list (exchange_item_id, product_id) VALUES ('${exchangeList[i]}','${id}');`);
