@@ -14,6 +14,22 @@ const userValidationRules = [
       .withMessage('email address is invalid'),
   ];
 
+  const addUserValidationRules = [
+    body('user_name').notEmpty().withMessage('User name is required'),
+    body('address').notEmpty().withMessage('Address is required'),
+    body('first_name').notEmpty().withMessage('First name is required'),
+    body('last_name').notEmpty().withMessage('Last name is required'),
+    body('contact_number').notEmpty().withMessage('Contact number is required'),
+    body('postal_code').notEmpty().withMessage('Postal code is required'),
+    body('password').notEmpty().withMessage('Password is required'),
+    body('email')
+      .notEmpty()
+      .withMessage('email address is required')
+      .isEmail()
+      .withMessage('email address is invalid'),
+  ];
+
+
 
   const userValidate = (req, res, next) => {
     const result = validationResult(req).formatWith((error) => error.msg);
@@ -33,5 +49,6 @@ const userValidationRules = [
 
   module.exports = {
     userValidationRules,
+    addUserValidationRules,
     userValidate
   }
