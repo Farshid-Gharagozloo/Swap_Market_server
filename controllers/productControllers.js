@@ -22,7 +22,6 @@ function parseProductItem (info, exItems){
     };
 }
 
-
 const getProductItem = async (req, res) =>{
 
   try {

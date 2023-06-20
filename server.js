@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const productRoutes = require('./routes/productRoutes');
 const profileRoutes = require('./routes/profileRoutes');
+const listRoutes = require('./routes/listRoutes');
 
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || '127.0.0.1';
@@ -17,7 +18,7 @@ app.get('/', (_req, res) => res.send('Having a home is awesome!'));
 
 app.use('/product', productRoutes);
 app.use('/profile', profileRoutes);
-
+app.use('/list', listRoutes);
 
 const server = app.listen(PORT, HOST, () => {
     const { address, port } = server.address();
