@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
@@ -11,7 +12,7 @@ exports.seed = async function (knex) {
       address: "47 Maple Street",
       postal_code: "12345",
       email: "emma.walker@example.com",
-      password: "wRf9@KlP",
+      password: bcrypt.hashSync("wRf9@KlP", 10), 
       contact_number: 1234567
     },
     {
@@ -22,7 +23,7 @@ exports.seed = async function (knex) {
       address: "21 Oak Avenue",
       postal_code: "98765",
       email: "alexander.anderson@example.com",
-      password: "P@ssw0rd123",
+      password: bcrypt.hashSync("P@ssw0rd123", 10),
       contact_number: 9876543
     },
     {
@@ -33,7 +34,7 @@ exports.seed = async function (knex) {
       address: "9 Elm Street",
       postal_code: "54321",
       email: "olivia.parker@example.com",
-      password: "7&fHg#9Lm",
+      password: bcrypt.hashSync("7&fHg#9Lm", 10),
       contact_number: 3216789
     },
     {
@@ -44,7 +45,7 @@ exports.seed = async function (knex) {
       address: "62 Pine Avenue",
       postal_code: "23456",
       email: "ethan.hughes@example.com",
-      password: "S3cureP@ss",
+      password: bcrypt.hashSync("S3cureP@ss", 10),
       contact_number: 4567890
     },
     {
@@ -55,7 +56,7 @@ exports.seed = async function (knex) {
       address: "14 Cedar Road",
       postal_code: "87654",
       email: "sophia.carter@example.com",
-      password: "Passw0rd",
+      password: bcrypt.hashSync("Passw0rd", 10),
       contact_number: 7892123
     },
   ]);

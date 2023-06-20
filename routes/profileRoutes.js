@@ -6,6 +6,10 @@ const profileControllers = require('../controllers/profileControllers');
 
 
 router
+    .route('/login')
+    .post(profileControllers.login);
+
+router
     .route('/:id')
     .get(profileControllers.getProfileUser)
     .put(userValidationRules, userValidate, profileControllers.editProfileUser)

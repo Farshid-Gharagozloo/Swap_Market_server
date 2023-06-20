@@ -1,4 +1,7 @@
 const knex = require('knex')(require('../knexfile'));
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+require('dotenv').config();
 
 function parseProfileInfo (info) {
     return {
@@ -38,8 +41,7 @@ const editProfileUser = async (req, res) => {
 
 const addProfileUser = async (req, res) => {
     try {
-        // const { user_name, first_name, last_name, address, postal_code, email, contact_number } = req.body;
-        // console.log(req.body);
+        req.body.password = bcrypt.hashSync(req.body.password, 10) 
         const addUser = await knex('user').insert(req.body);
         console.log(addUser);
         return res.status(201).send('Successful');
@@ -49,8 +51,50 @@ const addProfileUser = async (req, res) => {
     }
 }
 
+
+const login = (req, res) => {
+    const { user_name, password } = req.body;
+
+    if (!user_name || !password) {
+        return res.status(400).json({
+          message: "Login requires user name and password"
+        })
+    }
+
+    knex('user')
+        .where({ user_name: user_name})
+        .then((users) => {
+            if (users.length === 0){
+                return res.status(401).json({message: "Invalid credentials 322"});
+            }
+
+            const user = users[0];
+            console.log(user.password);
+
+            const validPassword = bcrypt.compareSync(password, user.password)
+            // const validPassword = password === user.password ? true : false;
+            if (!validPassword) {
+                return res.status(401)
+                .json({
+                    message: "Invalid credentials 002"
+                })
+            }
+
+            const token = jwt.sign(
+                { userId: user.id }, 
+                process.env.SECRET_KEY,
+                {
+                  expiresIn: 60 * 60 * 24
+                }
+            );
+
+            res.json({ token });
+        })
+}
+
 module.exports = {
     getProfileUser,
     editProfileUser,
-    addProfileUser
+    addProfileUser,
+    login
 }
