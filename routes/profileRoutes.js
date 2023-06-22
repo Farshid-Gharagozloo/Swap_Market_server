@@ -9,11 +9,17 @@ router
     .route('/login')
     .post(profileControllers.login);
 
+
+router
+    .route('/signup')
+    .post(addUserValidationRules, userValidate, profileControllers.addProfileUser);
+
+
 router
     .route('/:id')
     .get(profileControllers.getProfileUser)
-    .put(userValidationRules, userValidate, profileControllers.editProfileUser)
-    .post(addUserValidationRules, userValidate, profileControllers.addProfileUser);
+    .put(userValidationRules, userValidate, profileControllers.editProfileUser);
+    
 
 
 
