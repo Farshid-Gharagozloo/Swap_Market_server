@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
+// const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
-
-
 
 app.use(cors());
 const productRoutes = require('./routes/productRoutes');
@@ -13,7 +12,6 @@ const listRoutes = require('./routes/listRoutes');
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || '127.0.0.1';
 app.use(express.json());
-
 
 
 app.get('/', (_req, res) => res.send('Having a home is awesome!'));

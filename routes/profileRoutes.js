@@ -3,6 +3,7 @@ const router = express.Router();
 
 const {userValidationRules, addUserValidationRules, userValidate} = require('../middleware/userValidation')
 const profileControllers = require('../controllers/profileControllers');
+const { authorize } = require('../middleware/authorize');
 
 
 router
@@ -17,7 +18,7 @@ router
 
 router
     .route('/:id')
-    .get(profileControllers.getProfileUser)
+    .get(authorize,profileControllers.getProfileUser)
     .put(userValidationRules, userValidate, profileControllers.editProfileUser);
     
 
