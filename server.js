@@ -1,8 +1,23 @@
 const express = require('express');
 const app = express();
-// const path = require('path');
+const path = require('path');
+const multer  = require('multer');
 const cors = require('cors');
 require('dotenv').config();
+
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         console.log(__dirname);
+//         cb(null, path.join(__dirname, './public/images'))
+//     },
+
+//     filename: (req, file, cb) => {
+//         console.log(file);
+//         cb(null, Date.now() + path.extname(file.originalname));
+//     }
+// });
+
+// const upload = multer({ storage: storage });
 
 app.use(cors());
 const productRoutes = require('./routes/productRoutes');
@@ -16,6 +31,9 @@ app.use(express.json());
 
 app.get('/', (_req, res) => res.send('Having a home is awesome!'));
 
+// app.post("/upload", upload.single('image') ,(req, res) => {
+//     res.send("image uploaded");
+// })
 app.use('/product', productRoutes);
 app.use('/profile', profileRoutes);
 app.use('/list', listRoutes);

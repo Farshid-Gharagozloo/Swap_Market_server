@@ -6,6 +6,8 @@ const profileControllers = require('../controllers/profileControllers');
 const { authorize } = require('../middleware/authorize');
 
 
+
+
 router
     .route('/login')
     .post(profileControllers.login);
@@ -21,7 +23,5 @@ router
     .get(authorize,profileControllers.getProfileUser)
     .put(userValidationRules, userValidate, profileControllers.editProfileUser);
     
-
-
 
 module.exports = router;

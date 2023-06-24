@@ -20,6 +20,9 @@ router
     .route('/interchangeable')
     .get(productListControllers.getListByChangeability);
 
+router
+    .route('/user/:id')
+    .get(productListControllers.getListByUserId);
 
 module.exports = router;
 

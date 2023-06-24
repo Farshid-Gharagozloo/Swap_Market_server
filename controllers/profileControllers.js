@@ -51,7 +51,6 @@ const addProfileUser = async (req, res) => {
     }
 }
 
-
 const login = (req, res) => {
     const { user_name, password } = req.body;
 
@@ -72,7 +71,6 @@ const login = (req, res) => {
             console.log(user.password);
 
             const validPassword = bcrypt.compareSync(password, user.password)
-            // const validPassword = password === user.password ? true : false;
             if (!validPassword) {
                 return res.status(401)
                 .json({

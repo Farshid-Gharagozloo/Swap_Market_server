@@ -88,8 +88,11 @@ const editProductItem = async (req, res) => {
 
 const addProductItem = async (req, res) => {
   try {
-    const { name: product_name, user_id, interchangeable, exchangeable_items, category, description, price } = req.body;
+    const { name: product_name, user_id, interchangeable, exchangeable_items: exItems, category, description, price } = req.body;
 
+
+    const exchangeable_items = JSON.parse(exItems);
+    // console.log(req.body);
     const userExist = await knex('user').where({ id: user_id });
     if (userExist.length === 0) {
       return res.status(400).send('User does not exist');
@@ -105,7 +108,7 @@ const addProductItem = async (req, res) => {
     }
 
     const lastItemId = await knex.raw('SELECT id FROM product ORDER BY id DESC LIMIT 1;');
-    // console.log(lastItemId[0][0].id);
+    console.log(exchangeable_items);
     const id = lastItemId[0][0].id;
 
     let exchangeList = [];
@@ -134,8 +137,20 @@ const addProductItem = async (req, res) => {
 };
 
 
+const getCategoryList = async (_req, res) => {
+  try {
+    const categories = await knex.raw('SELECT category_name FROM category;');
+    res.status(200).send(categories[0]);
+  } catch {
+    return res.status(404).send('No category list!');
+  }
+}
+
+
+
 module.exports = {
     getProductItem,
     editProductItem,
-    addProductItem
+    addProductItem,
+    getCategoryList
 }

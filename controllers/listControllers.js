@@ -74,9 +74,24 @@ const getListByChangeability = async (req, res) => {
     }
 };
 
+const getListByUserId = async (req, res) => {
+    try {
+        // const {user_id} = req.body;
+
+        const productListInfo = await knex.raw('SELECT product.id, product_name, user_name, category_name, price, interchangeable, address, '+
+        'product.updated_at FROM product JOIN category ON product.category_id=category.id '+
+        `JOIN user ON product.user_id=user.id WHERE user_id = '${req.params.id}';`);
+        
+        res.status(200).json(parseProductList(productListInfo[0]));
+    } catch (error) {
+        return res.status(404).send('No user id list!');
+    }
+}
+
 module.exports = {
     getProductList,
     getListByCategory,
     getListByPrice,
-    getListByChangeability
+    getListByChangeability,
+    getListByUserId
 }
