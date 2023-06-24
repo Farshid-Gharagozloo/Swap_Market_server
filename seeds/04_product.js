@@ -11,6 +11,7 @@ exports.seed = async function (knex) {
         description: "long description about item .......",
         interchangeable: "yes",
         price: 22,
+        image_url: "http://localhost:8080/images/1687624337159.jpg",
       },
       {
         id: 2,
@@ -20,6 +21,7 @@ exports.seed = async function (knex) {
         description: "long description about item .......",
         interchangeable: "yes",
         price: 42,
+        image_url: "http://localhost:8080/images/1687624337159.jpg",
       },
       {
         id: 3,
@@ -29,6 +31,7 @@ exports.seed = async function (knex) {
         description: "long description about item .......",
         interchangeable: "yes",
         price: 77,
+        image_url: "http://localhost:8080/images/1687624337159.jpg",
       },
       {
         id: 4,
@@ -38,6 +41,7 @@ exports.seed = async function (knex) {
         description: "long description about item .......",
         interchangeable: "no",
         price: 20,
+        image_url: "http://localhost:8080/images/1687624337159.jpg",
       },
       {
         id: 5,
@@ -47,6 +51,7 @@ exports.seed = async function (knex) {
         description: "long description about item .......",
         interchangeable: "no",
         price: 25,
+        image_url: "http://localhost:8080/images/1687624337159.jpg",
       },
       {
         id: 6,
@@ -56,6 +61,7 @@ exports.seed = async function (knex) {
         description: "long description about item .......",
         interchangeable: "no",
         price: 30,
+        image_url: "http://localhost:8080/images/1687624337159.jpg",
       },
       {
         id: 7,
@@ -65,6 +71,7 @@ exports.seed = async function (knex) {
         description: "long description about item .......",
         interchangeable: "yes",
         price: 45,
+        image_url: "http://localhost:8080/images/1687624337159.jpg",
       },
       {
         id: 8,
@@ -74,6 +81,7 @@ exports.seed = async function (knex) {
         description: "long description about item .......",
         interchangeable: "yes",
         price: 86,
+        image_url: "http://localhost:8080/images/1687624337159.jpg",
       },
       {
         id: 9,
@@ -83,6 +91,7 @@ exports.seed = async function (knex) {
         description: "long description about item .......",
         interchangeable: "no",
         price: 105,
+        image_url: "http://localhost:8080/images/1687624337159.jpg",
       },
       {
         id: 10,
@@ -92,6 +101,7 @@ exports.seed = async function (knex) {
         description: "long description about item .......",
         interchangeable: "yes",
         price: 20,
+        image_url: "http://localhost:8080/images/1687624337159.jpg",
       },
     ]);
   };

@@ -18,6 +18,7 @@ exports.up = function (knex) {
       table.string('description').notNullable();
       table.string('interchangeable').notNullable();
       table.integer('price').notNullable();
+      table.string('image_url');
       table.timestamp('created_at').defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
     });

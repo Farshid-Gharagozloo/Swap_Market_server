@@ -18,6 +18,7 @@ function parseProductItem (info, exItems){
         postal_code: info[0].postal_code,
         email: info[0].email,
         phone: info[0].contact_number, 
+        image_url: info[0].image_url,
         exchangeable_items: exchange_items
     };
 }
@@ -25,7 +26,7 @@ function parseProductItem (info, exItems){
 const getProductItem = async (req, res) =>{
 
   try {
-    const productsInfo = await knex.raw('SELECT product_name, price, category_name, description, '+
+    const productsInfo = await knex.raw('SELECT product_name, price, category_name, description, image_url, '+
         'user_name, address, postal_code, email, contact_number FROM product '+
         'JOIN category ON product.category_id=category.id '+
         `JOIN user ON product.user_id=user.id WHERE product.id = ${req.params.id}`);
@@ -92,7 +93,8 @@ const addProductItem = async (req, res) => {
 
 
     const exchangeable_items = JSON.parse(exItems);
-    // console.log(req.body);
+
+    const image_url = 'http://localhost:8080/images/' + String(req.file.filename);
     const userExist = await knex('user').where({ id: user_id });
     if (userExist.length === 0) {
       return res.status(400).send('User does not exist');
@@ -101,14 +103,14 @@ const addProductItem = async (req, res) => {
     const grabCategoryId = await knex.raw(`SELECT id FROM category WHERE category_name = '${category}';`);
     const category_id = grabCategoryId[0][0].id;
 
-    const addProduct = await knex('product').insert({ user_id, description, product_name, interchangeable, price, category_id });
+    const addProduct = await knex('product').insert({ user_id, description, product_name, interchangeable, price, category_id, image_url });
 
     if (interchangeable === 'no'){
       return res.send('Successful');
     }
 
     const lastItemId = await knex.raw('SELECT id FROM product ORDER BY id DESC LIMIT 1;');
-    console.log(exchangeable_items);
+    // console.log(exchangeable_items);
     const id = lastItemId[0][0].id;
 
     let exchangeList = [];

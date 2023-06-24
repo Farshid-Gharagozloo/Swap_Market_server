@@ -24,6 +24,8 @@ const productRoutes = require('./routes/productRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const listRoutes = require('./routes/listRoutes');
 
+app.use(express.static('public'));
+
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || '127.0.0.1';
 app.use(express.json());

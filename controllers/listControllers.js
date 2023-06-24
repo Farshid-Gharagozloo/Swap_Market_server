@@ -10,6 +10,7 @@ function parseProductList (listInfo) {
         price: item.price,
         interchangeable: item.interchangeable,
         address: item.address,
+        image_url: item.image_url,
         time: item.updated_at,
       };
     });
@@ -20,7 +21,7 @@ function parseProductList (listInfo) {
 const getProductList = async (_req, res) => {
     try {
       const productListInfo = await knex.raw('SELECT product.id, product_name, user_name, category_name, price, interchangeable, address, ' +
-        'product.updated_at FROM product JOIN category ON product.category_id=category.id JOIN user ON product.user_id=user.id' );
+        'product.updated_at, product.image_url FROM product JOIN category ON product.category_id=category.id JOIN user ON product.user_id=user.id' );
       
         // console.log(productListInfo[0]);
   
@@ -35,7 +36,7 @@ const getListByCategory = async (req, res) => {
         const {category_name} = req.body;
 
         const productListInfo = await knex.raw('SELECT product.id, product_name, user_name, category_name, price, interchangeable, address, '+
-        'product.updated_at FROM product JOIN category ON product.category_id=category.id '+
+        'product.updated_at, product.image_url FROM product JOIN category ON product.category_id=category.id '+
         `JOIN user ON product.user_id=user.id WHERE category_name = '${category_name}';`);
         
         res.status(200).json(parseProductList(productListInfo[0]));
@@ -50,7 +51,7 @@ const getListByPrice = async (req, res) => {
         const {highest_price, lowest_price} = req.body;
 
         const productListInfo = await knex.raw('SELECT product.id, product_name, user_name, category_name, price, interchangeable, address, '+
-        'product.updated_at FROM product JOIN category ON product.category_id=category.id '+
+        'product.updated_at, product.image_url FROM product JOIN category ON product.category_id=category.id '+
         `JOIN user ON product.user_id=user.id WHERE price < '${highest_price}' and price > '${lowest_price}';`);
         
         res.status(200).json(parseProductList(productListInfo[0]));
@@ -65,7 +66,7 @@ const getListByChangeability = async (req, res) => {
         const {interchangeable} = req.body;
 
         const productListInfo = await knex.raw('SELECT product.id, product_name, user_name, category_name, price, interchangeable, address, '+
-        'product.updated_at FROM product JOIN category ON product.category_id=category.id '+
+        'product.updated_at, product.image_url FROM product JOIN category ON product.category_id=category.id '+
         `JOIN user ON product.user_id=user.id WHERE interchangeable = '${interchangeable}';`);
         
         res.status(200).json(parseProductList(productListInfo[0]));
@@ -79,7 +80,7 @@ const getListByUserId = async (req, res) => {
         // const {user_id} = req.body;
 
         const productListInfo = await knex.raw('SELECT product.id, product_name, user_name, category_name, price, interchangeable, address, '+
-        'product.updated_at FROM product JOIN category ON product.category_id=category.id '+
+        'product.updated_at, product.image_url FROM product JOIN category ON product.category_id=category.id '+
         `JOIN user ON product.user_id=user.id WHERE user_id = '${req.params.id}';`);
         
         res.status(200).json(parseProductList(productListInfo[0]));
