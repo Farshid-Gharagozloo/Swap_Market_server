@@ -9,7 +9,7 @@ exports.up = function (knex) {
       table.string('postal_code').notNullable();
       table.string('email').notNullable();
       table.string('password').notNullable();
-      table.integer('contact_number').unsigned().notNullable();
+      table.bigint('contact_number').unsigned().notNullable();
       table.timestamp('created_at').defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     });

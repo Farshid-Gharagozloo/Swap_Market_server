@@ -43,8 +43,31 @@ const addProfileUser = async (req, res) => {
     try {
         req.body.password = bcrypt.hashSync(req.body.password, 10) 
         const addUser = await knex('user').insert(req.body);
-        console.log(addUser);
-        return res.status(201).send('Successful');
+        // console.log(addUser[0][0]);
+/////////////
+        knex('user')
+        .where({ user_name: req.body.user_name})
+        .then((users) => {
+            if (users.length === 0){
+                return res.status(401).json({message: "Invalid credentials 322"});
+            }
+
+            const user = users[0];
+
+            const token = jwt.sign(
+                { userId: user.id }, 
+                process.env.SECRET_KEY,
+                {
+                expiresIn: 60 * 60 * 24
+                }
+            );
+
+            res.json({ token , user_id:user.id });
+        })
+
+
+///////////////
+        // return res.status(201).send('Successful');
     } catch (error) {
         console.log(error);
         return res.status(500).send('Error: failed!');
