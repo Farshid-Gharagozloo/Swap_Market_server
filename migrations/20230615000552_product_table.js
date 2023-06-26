@@ -15,7 +15,7 @@ exports.up = function (knex) {
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
       table.string('product_name').notNullable();
-      table.string('description').notNullable();
+      table.text('description').notNullable();
       table.string('interchangeable').notNullable();
       table.integer('price').notNullable();
       table.string('image_url');
