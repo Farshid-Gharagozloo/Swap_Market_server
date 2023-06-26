@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const { authorize } = require('../middleware/authorize');
+
 
 const productListControllers = require('../controllers/listControllers');
 
@@ -22,7 +24,7 @@ router
 
 router
     .route('/user/:id')
-    .get(productListControllers.getListByUserId);
+    .get(authorize, productListControllers.getListByUserId);
 
 module.exports = router;
 

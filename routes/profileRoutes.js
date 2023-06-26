@@ -21,7 +21,7 @@ router
 router
     .route('/:id')
     .get(authorize,profileControllers.getProfileUser)
-    .put(userValidationRules, userValidate, profileControllers.editProfileUser);
+    .put(authorize, userValidationRules, userValidate, profileControllers.editProfileUser);
     
 
 module.exports = router;

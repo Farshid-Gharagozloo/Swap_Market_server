@@ -31,6 +31,6 @@ router
 router
     .route('/:id')
     .get(productControllers.getProductItem)
-    .put(productControllers.editProductItem);
+    .put(authorize, upload.single('image'),productControllers.editProductItem);
 
 module.exports = router;

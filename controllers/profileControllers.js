@@ -68,7 +68,6 @@ const login = (req, res) => {
             }
 
             const user = users[0];
-            console.log(user.password);
 
             const validPassword = bcrypt.compareSync(password, user.password)
             if (!validPassword) {
@@ -86,7 +85,7 @@ const login = (req, res) => {
                 }
             );
 
-            res.json({ token });
+            res.json({ token , user_id:user.id });
         })
 }
 

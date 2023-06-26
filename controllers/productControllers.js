@@ -19,6 +19,7 @@ function parseProductItem (info, exItems){
         email: info[0].email,
         phone: info[0].contact_number, 
         image_url: info[0].image_url,
+        user_id: info[0].user_id,
         exchangeable_items: exchange_items
     };
 }
@@ -26,7 +27,7 @@ function parseProductItem (info, exItems){
 const getProductItem = async (req, res) =>{
 
   try {
-    const productsInfo = await knex.raw('SELECT product_name, price, category_name, description, image_url, '+
+    const productsInfo = await knex.raw('SELECT product_name, price, category_name, description, image_url, user_id, '+
         'user_name, address, postal_code, email, contact_number FROM product '+
         'JOIN category ON product.category_id=category.id '+
         `JOIN user ON product.user_id=user.id WHERE product.id = ${req.params.id}`);
@@ -43,7 +44,11 @@ const getProductItem = async (req, res) =>{
 
 const editProductItem = async (req, res) => {
   try {
-    const { id, user_id, exchangeable_items, category, description, price, name: product_name } = req.body;
+    const { id, user_id, exchangeable_items: exItems, category, description, price, name: product_name, image_url: image } = req.body;
+
+    const exchangeable_items = JSON.parse(exItems);
+
+    const image_url = image || 'http://localhost:8080/images/' + String(req.file.filename);
 
     const productExist = await knex('product').where({ id });
     if (productExist.length === 0) {
@@ -60,7 +65,7 @@ const editProductItem = async (req, res) => {
 
     let exchangeList = [];
 
-    const updateProduct = await knex('product').where({ id }).update({ description, product_name, price, category_id });
+    const updateProduct = await knex('product').where({ id }).update({ description, product_name, price, category_id, image_url });
 
     for (let i = 0; i < exchangeable_items.length; i++) {
       const exNewItemUpdate = await knex.raw(`SELECT id FROM exchange_items WHERE item_name = '${exchangeable_items[i]}';`);
@@ -105,8 +110,11 @@ const addProductItem = async (req, res) => {
 
     const addProduct = await knex('product').insert({ user_id, description, product_name, interchangeable, price, category_id, image_url });
 
+    const getId = await knex.raw(`SELECT id FROM product WHERE product_name = '${product_name}'`)
+    // console.log(getId);
     if (interchangeable === 'no'){
-      return res.send('Successful');
+      return res.json({item_id: getId[0][0].id});
+      // return res.send('Successful');
     }
 
     const lastItemId = await knex.raw('SELECT id FROM product ORDER BY id DESC LIMIT 1;');
@@ -130,7 +138,8 @@ const addProductItem = async (req, res) => {
     for (let i=0; i < exchangeList.length; i++){
       const addExchangeList = await knex.raw(`INSERT INTO exchange_list (exchange_item_id, product_id) VALUES ('${exchangeList[i]}','${id}');`);
     }
-    return res.send('Successful');
+    return res.json({item_id: getId[0][0].id});
+    // return res.send('Successful');
 
   } catch (error) {
     return res.status(500).send('Error: No product found');
