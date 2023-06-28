@@ -155,13 +155,31 @@ const getCategoryList = async (_req, res) => {
   } catch {
     return res.status(404).send('No category list!');
   }
-}
+};
 
+
+const removeproduct = async (req, res) => {
+  try {
+    const userIdcount = await knex.raw(`SELECT user_id FROM product Where id= '${req.params.id}'`);
+    const removecount = await knex('product').where({ id: req.params.id }).del();
+    const removeexcount = await knex('exchange_list').where({ product_id: req.params.id }).del();
+
+    const user_id = userIdcount[0][0].user_id;
+    return removecount
+      ? res.json({user_id})
+      : res.status(404).send('Product is not found');
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send('Unable to delete record');
+  }
+
+};
 
 
 module.exports = {
     getProductItem,
     editProductItem,
     addProductItem,
-    getCategoryList
+    getCategoryList,
+    removeproduct
 }

@@ -23,7 +23,7 @@ exports.seed = async function (knex) {
       address: "21 Oak Avenue",
       postal_code: "98765",
       email: "alexander.anderson@example.com",
-      password: bcrypt.hashSync("P@ssw0rd123", 10),
+      password: bcrypt.hashSync("asdasd", 10),
       contact_number: 9876543
     },
     {

@@ -33,11 +33,21 @@ const getProductList = async (_req, res) => {
   
 const getListByCategory = async (req, res) => {
     try {
-        const {category_name} = req.body;
-
         const productListInfo = await knex.raw('SELECT product.id, product_name, user_name, category_name, price, interchangeable, address, '+
         'product.updated_at, product.image_url FROM product JOIN category ON product.category_id=category.id '+
-        `JOIN user ON product.user_id=user.id WHERE category_name = '${category_name}';`);
+        `JOIN user ON product.user_id=user.id WHERE category_name = '${req.params.cat}' and product.id != ${req.params.id};`);
+        
+        res.status(200).json(parseProductList(productListInfo[0]));
+    } catch (error) {
+        return res.status(404).send('No category list!');
+    }
+};
+
+const getListByUsername = async (req, res) => {
+    try {
+        const productListInfo = await knex.raw('SELECT product.id, product_name, user_name, category_name, price, interchangeable, address, '+
+        'product.updated_at, product.image_url FROM product JOIN category ON product.category_id=category.id '+
+        `JOIN user ON product.user_id=user.id WHERE user_name = '${req.params.user}' and product.id != ${req.params.id};`);
         
         res.status(200).json(parseProductList(productListInfo[0]));
     } catch (error) {
@@ -77,8 +87,6 @@ const getListByChangeability = async (req, res) => {
 
 const getListByUserId = async (req, res) => {
     try {
-        // const {user_id} = req.body;
-
         const productListInfo = await knex.raw('SELECT product.id, product_name, user_name, category_name, price, interchangeable, address, '+
         'product.updated_at, product.image_url FROM product JOIN category ON product.category_id=category.id '+
         `JOIN user ON product.user_id=user.id WHERE user_id = '${req.params.id}';`);
@@ -94,5 +102,6 @@ module.exports = {
     getListByCategory,
     getListByPrice,
     getListByChangeability,
-    getListByUserId
+    getListByUserId,
+    getListByUsername
 }
