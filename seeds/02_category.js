@@ -15,5 +15,21 @@ exports.seed = async function (knex) {
       id: 3,
       category_name: 'Arts',
     },
+    {
+      id: 4,
+      category_name: 'Electronics',
+    },
+    {
+      id: 5,
+      category_name: 'Musical Instrument',
+    },
+    {
+      id: 6,
+      category_name: 'Pet Supplies',
+    },
+    {
+      id: 7,
+      category_name: 'Vehicle',
+    },
   ]);
 };

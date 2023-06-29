@@ -59,5 +59,27 @@ exports.seed = async function (knex) {
       password: bcrypt.hashSync("Passw0rd", 10),
       contact_number: 7892123
     },
+    {
+      id: 6,
+      user_name: "jsmith123",
+      first_name: "John",
+      last_name: "Smith",
+      address: "123 Fake Street",
+      postal_code: "12345",
+      email: "john.smith@example.com",
+      password: bcrypt.hashSync("987654321", 10),
+      contact_number: 551234567
+    },
+    {
+      id: 7,
+      user_name: "lisa88",
+      first_name: "Lisa",
+      last_name: "Johnson",
+      address: "456 Mock Avenue",
+      postal_code: "67890",
+      email: "lisa.johnson@example.com",
+      password: bcrypt.hashSync("123456789", 10),
+      contact_number: 559876543
+    },
   ]);
 };
