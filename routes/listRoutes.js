@@ -11,7 +11,7 @@ router
     .get(productListControllers.getProductList);
 
 router
-    .route('/category')
+    .route('/category/:cat/:id')
     .get(productListControllers.getListByCategory);
 
 router
@@ -25,6 +25,10 @@ router
 router
     .route('/user/:id')
     .get(authorize, productListControllers.getListByUserId);
+
+router
+    .route('/username/:user/:id')
+    .get(productListControllers.getListByUsername);
 
 module.exports = router;
 
