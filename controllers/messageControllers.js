@@ -32,15 +32,27 @@ const getMessageList = async (req, res) => {
 }
 
 
-// const sendTextMessage = async (req, res) => {
+const sendTextMessage = async (req, res) => {
 
-//     try {
-//         const 
-//     }
-// }
+    try {
+        const { text_message, user_id } = req.body;
+
+        const owner = await knex.raw(`SELECT user_id FROM product WHERE id = ${req.params.id};`);
+
+        const product_id = req.params.id;
+        const communicator_user_id = req.params.user;
+        const receiver_user_id = !user_id ? owner[0][0].user_id : user_id;
+
+        const addMessage = await knex('messages').insert({ product_id, communicator_user_id, receiver_user_id, text_message });
+
+        return res.json("successful");
+    } catch (error) {
+        return res.status(500).send('Error: No Message adds');
+    }
+}
 
 
 module.exports = {
-    getMessageList
-    // sendTextMessage
+    getMessageList,
+    sendTextMessage
 }
