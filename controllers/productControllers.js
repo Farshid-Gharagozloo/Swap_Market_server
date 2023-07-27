@@ -111,14 +111,14 @@ const addProductItem = async (req, res) => {
     const addProduct = await knex('product').insert({ user_id, description, product_name, interchangeable, price, category_id, image_url });
 
     const getId = await knex.raw(`SELECT id FROM product WHERE product_name = '${product_name}'`)
-    // console.log(getId);
+    
     if (interchangeable === 'no'){
       return res.json({item_id: getId[0][0].id});
-      // return res.send('Successful');
+      
     }
 
     const lastItemId = await knex.raw('SELECT id FROM product ORDER BY id DESC LIMIT 1;');
-    // console.log(exchangeable_items);
+    
     const id = lastItemId[0][0].id;
 
     let exchangeList = [];
@@ -133,13 +133,11 @@ const addProductItem = async (req, res) => {
       }
     }
 
-    // console.log(exchangeList);
-
     for (let i=0; i < exchangeList.length; i++){
       const addExchangeList = await knex.raw(`INSERT INTO exchange_list (exchange_item_id, product_id) VALUES ('${exchangeList[i]}','${id}');`);
     }
     return res.json({item_id: getId[0][0].id});
-    // return res.send('Successful');
+    
 
   } catch (error) {
     return res.status(500).send('Error: No product found');
