@@ -8,6 +8,12 @@ router
     .route('/:user/:id')
     .get(messageListControllers.getMessageList)
     .post(messageListControllers.sendTextMessage);
+    
+
+router
+    .route('/:id')
+    .delete(messageListControllers.removeTextMessage);
+
 
 
 module.exports = router;
