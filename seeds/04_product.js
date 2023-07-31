@@ -11,7 +11,7 @@ exports.seed = async function (knex) {
         description: "Discover our brand new dining table set, available for sale at an incredibly low price! This 7-piece dining set includes a dining table and chairs. With the option of cash on delivery, purchasing is made easy. Kindly drop us a message for additional information. Please note that the price mentioned above only covers delivery charges.",
         interchangeable: "yes",
         price: 80,
-        image_url: "http://localhost:8080/images/image_1.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_1.jpg",
       },
       {
         id: 2,
@@ -21,7 +21,7 @@ exports.seed = async function (knex) {
         description: "Introducing the latest addition to our collection - brand new markers! These dual tip permanent art markers come in a set of 36/4860/80/120 colors, perfect for coloring, illustrations, and sketching. Whether you're a kid or an adult, these markers are sure to bring your artwork to life. Ideal for book painting, these markers offer vibrant and long-lasting colors.",
         interchangeable: "yes",
         price: 45,
-        image_url: "http://localhost:8080/images/image_2.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_2.jpg",
       },
       {
         id: 3,
@@ -31,7 +31,7 @@ exports.seed = async function (knex) {
         description: "Looking for a thrilling ride for your little one? We have a Ferrari ride-on car available, which may be used but still in good condition. Despite a few scratches, it remains in excellent shape. Please note that one rim is missing. To enhance the experience, the ride-on comes with a remote control.",
         interchangeable: "yes",
         price: 77,
-        image_url: "http://localhost:8080/images/image_3.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_3.jpg",
       },
       {
         id: 4,
@@ -41,7 +41,7 @@ exports.seed = async function (knex) {
         description: "Indulge in luxury with our special sale on velvet tufts sectional sofas. These sofas are available in a variety of designs and colors, ensuring there's a perfect match for your style and taste. Experience ultimate comfort and elegance in your living space with these exquisite pieces.",
         interchangeable: "no",
         price: 200,
-        image_url: "http://localhost:8080/images/image_4.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_4.jpg",
       },
       {
         id: 5,
@@ -51,7 +51,7 @@ exports.seed = async function (knex) {
         description: "Enhance your wall decor with this beautiful handcrafted metal art piece. Its lovely soothing tones of gold finish create an enchanting ambiance. This wall art comes in one piece, ready and easy to hang on your wall. Elevate the aesthetic appeal of your space with this captivating addition.",
         interchangeable: "no",
         price: 25,
-        image_url: "http://localhost:8080/images/image_5.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_5.jpg",
       },
       {
         id: 6,
@@ -61,7 +61,7 @@ exports.seed = async function (knex) {
         description: "Add a touch of elegance to your bedroom with these two barely used, neat, and clean wooden nightstands. They are not only functional but also enhance the overall look of your bedroom. Each nightstand is priced at $99, but if you buy both together, you can get them for a discounted price of $175. Rest assured, they come from a pet-free and non-smoking home. The dimensions are as follows: Depth: 16 inches, Breadth: 22 inches, Height: 23 inches",
         interchangeable: "no",
         price: 30,
-        image_url: "http://localhost:8080/images/image_6.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_6.jpg",
       },
       {
         id: 7,
@@ -71,7 +71,7 @@ exports.seed = async function (knex) {
         description: "Looking for a versatile and comfortable seating option? We have a brand new 3-seater pull out sofa bed available for sale. This sofa bed provides the perfect solution for accommodating guests while adding style to your living space.",
         interchangeable: "yes",
         price: 145,
-        image_url: "http://localhost:8080/images/image_7.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_7.jpg",
       },
       {
         id: 8,
@@ -81,7 +81,7 @@ exports.seed = async function (knex) {
         description: "Immerse yourself in the world of modern art with this like-new 3-piece abstract canvas art. These three separate canvases can be arranged in various configurations, allowing you to create a dynamic and visually striking display. The dimensions of each panel are 40 x 60.",
         interchangeable: "yes",
         price: 86,
-        image_url: "http://localhost:8080/images/image_8.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_8.jpg",
       },
       {
         id: 9,
@@ -91,7 +91,7 @@ exports.seed = async function (knex) {
         description: "Looking for a trampoline that is suitable for both adults and kids? Look no further! This trampoline is in pristine condition, rated 10/10. It has been primarily used for workouts, ensuring its durability and reliability. Unfortunately, I am selling it due to an upcoming move. Don't miss out on this fantastic opportunity to bring fun and fitness into your home!",
         interchangeable: "no",
         price: 105,
-        image_url: "http://localhost:8080/images/image_9.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_9.jpg",
       },
       {
         id: 10,
@@ -101,7 +101,7 @@ exports.seed = async function (knex) {
         description: "Like-new Samsung electric front load washer and dryer set in perfect working order. This 2019 Black Stainless Steel Platinum Series pair is exceptionally clean and offers all necessary options. Stackable and available for $950 pick-up or $1000 with delivery (no basement). Firm price, no offers below asking. Model numbers in pictures. Delivery limited to driveway or garage. Dimensions: 27 wide, 33 deep, 38 high (or 79 stacked). Upgrade your laundry care with this high-quality set.",
         interchangeable: "yes",
         price: 250,
-        image_url: "http://localhost:8080/images/image_10.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_10.jpg",
       },
       {
         id: 11,
@@ -111,7 +111,7 @@ exports.seed = async function (knex) {
         description: "Canon EOS 60D + Kit Lens: Capture stunning photos with this practically new Canon EOS 60D DSLR camera. It includes a kit lens and is in pristine condition. Perfect for photography enthusiasts.",
         interchangeable: "yes",
         price: 500,
-        image_url: "http://localhost:8080/images/image_11.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_11.jpg",
       },
       {
         id: 12,
@@ -121,7 +121,7 @@ exports.seed = async function (knex) {
         description: "Drum Kit - Pdp New Yorker By DW / Black: Own this excellent condition PDP New Yorker drum kit. It includes a hi-hat stand, kick pedal, cymbal stand, snare stand, and original drum heads. Selling due to limited space.",
         interchangeable: "yes",
         price: 720,
-        image_url: "http://localhost:8080/images/image_12.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_12.jpg",
       },
       {
         id: 13,
@@ -131,7 +131,7 @@ exports.seed = async function (knex) {
         description: "Airline Approved Pet Soft Carrier 2-sided Expandable: Travel with ease using this airline-approved pet carrier. Its unique 2-sided expandable design allows pets to move comfortably. The carrier features a sturdy steel frame, waterproof material, and multiple pockets for accessories. It also includes a harness clip for added security.",
         interchangeable: "no",
         price: 75,
-        image_url: "http://localhost:8080/images/image_13.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_13.jpg",
       },
       {
         id: 14,
@@ -141,7 +141,7 @@ exports.seed = async function (knex) {
         description: "3 in 1 Dog Steps Stairs: Foldable Pet Ramp with Deluxe House and Storage: This versatile pet product combines a foldable pet ramp with dog steps, a cozy deluxe house, and a convenient storage compartment. Suitable for dogs up to 66lbs, it provides a safe and comfortable way for pets to reach higher places. The plush cushion and storage box add extra functionality and convenience.",
         interchangeable: "no",
         price: 50,
-        image_url: "http://localhost:8080/images/image_14.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_14.jpg",
       },
       {
         id: 15,
@@ -151,7 +151,7 @@ exports.seed = async function (knex) {
         description: "Capture memories and stay connected with this used iPhone 12 Pro Max. It features a large display, powerful performance, and high-quality camera.",
         interchangeable: "yes",
         price: 400,
-        image_url: "http://localhost:8080/images/image_15.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_15.jpg",
       },
       {
         id: 16,
@@ -161,7 +161,7 @@ exports.seed = async function (knex) {
         description: "Play and create music with this Ibanez electric guitar. It has been cleaned, polished, and fitted with new strings. Cash or potential swap for similar value guitars. Pick up in Mississauga.",
         interchangeable: "yes",
         price: 400,
-        image_url: "http://localhost:8080/images/image_16.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_16.jpg",
       },
       {
         id: 17,
@@ -171,7 +171,7 @@ exports.seed = async function (knex) {
         description: "This Toyota Camry offers a comfortable ride and comes with power windows. Although sold as is, it is a reliable vehicle with an automatic transmission.",
         interchangeable: "no",
         price: 4000,
-        image_url: "http://localhost:8080/images/image_17.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_17.jpg",
       },
       {
         id: 18,
@@ -181,7 +181,7 @@ exports.seed = async function (knex) {
         description: "Get a nearly new HP laptop with a vibrant IPS touchscreen, Windows 11 Professional, and powerful Intel N3450 Quadcore CPU. It includes pre-installed Microsoft Office 2021 and offers long battery life. Perfect for work or entertainment.",
         interchangeable: "yes",
         price: 155,
-        image_url: "http://localhost:8080/images/image_18.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_18.jpg",
       },
       {
         id: 19,
@@ -191,7 +191,7 @@ exports.seed = async function (knex) {
         description: "Handmade Mexican Dog Collars: Add style to your pet's wardrobe with these handmade Mexican dog collars. Available in various sizes, these collars showcase craftsmanship and cultural flair.",
         interchangeable: "no",
         price: 30,
-        image_url: "http://localhost:8080/images/image_19.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_19.jpg",
       },
       {
         id: 20,
@@ -201,7 +201,7 @@ exports.seed = async function (knex) {
         description: "Elevate your musical experience with the Alesis Virtue AHP-1 digital piano. It features 88 velocity-sensitive keys, 360 premium voices, LCD screen, lesson mode, and more. Ideal for both beginners and experienced players.",
         interchangeable: "yes",
         price: 249,
-        image_url: "http://localhost:8080/images/image_20.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_20.jpg",
       },
       {
         id: 21,
@@ -211,7 +211,7 @@ exports.seed = async function (knex) {
         description: "This reliable used Kia Rio is in good condition with new brakes, tires, and interior cosmetics. It offers a smooth driving experience and comes with automatic transmission.",
         interchangeable: "no",
         price: 8000,
-        image_url: "http://localhost:8080/images/image_21.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_21.jpg",
       },
       {
         id: 22,
@@ -221,7 +221,7 @@ exports.seed = async function (knex) {
         description: "Experience adventure with this near-showroom-condition 2018 Jeep Wrangler. It has low mileage and is equipped with a 3.6L V6 engine, automatic transmission, and Uconnect infotainment system. With its vibrant yellow exterior and black interior, it's ready for off-road fun.",
         interchangeable: "no",
         price: 20000,
-        image_url: "http://localhost:8080/images/image_22.jpg",
+        image_url: "https://swap-market-43df4eb58bee.herokuapp.com/images/image_22.jpg",
       },
     ]);
   };

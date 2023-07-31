@@ -48,7 +48,7 @@ const editProductItem = async (req, res) => {
 
     const exchangeable_items = JSON.parse(exItems);
 
-    const image_url = image || 'http://localhost:8080/images/' + String(req.file.filename);
+    const image_url = image || 'https://swap-market-43df4eb58bee.herokuapp.com/' + String(req.file.filename);
 
     const productExist = await knex('product').where({ id });
     if (productExist.length === 0) {
@@ -99,7 +99,7 @@ const addProductItem = async (req, res) => {
 
     const exchangeable_items = JSON.parse(exItems);
 
-    const image_url = 'http://localhost:8080/images/' + String(req.file.filename);
+    const image_url = 'https://swap-market-43df4eb58bee.herokuapp.com/' + String(req.file.filename);
     const userExist = await knex('user').where({ id: user_id });
     if (userExist.length === 0) {
       return res.status(400).send('User does not exist');
