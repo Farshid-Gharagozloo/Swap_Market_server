@@ -19,7 +19,7 @@ const HOST = process.env.HOST || '127.0.0.1';
 app.use(express.json());
 
 
-// app.get('/', (_req, res) => res.send('Having a home is awesome!'));
+app.get('/', (_req, res) => res.send('Having a home is awesome!'));
 
 app.use('/product', productRoutes);
 app.use('/profile', profileRoutes);
