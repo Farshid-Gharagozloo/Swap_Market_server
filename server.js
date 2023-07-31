@@ -15,7 +15,7 @@ const messageRoutes = require('./routes/messageRoutes');
 app.use(express.static('public'));
 
 const PORT = process.env.PORT || 5050;
-const HOST = process.env.HOST || '127.0.0.1';
+// const HOST = process.env.HOST || '127.0.0.1';
 app.use(express.json());
 
 
@@ -27,7 +27,7 @@ app.use('/list', listRoutes);
 app.use('/message', messageRoutes);
 
 
-const server = app.listen(PORT, HOST, () => {
+const server = app.listen(PORT, () => {
     const { address, port } = server.address();
     console.log(`Server listening on http://${address}:${port}`);
 });
