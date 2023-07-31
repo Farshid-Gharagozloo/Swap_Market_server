@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const path = require('path');
-const multer  = require('multer');
+// const path = require('path');
+// const multer  = require('multer');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -14,7 +14,7 @@ const messageRoutes = require('./routes/messageRoutes');
 
 app.use(express.static('public'));
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5050;
 const HOST = process.env.HOST || '127.0.0.1';
 app.use(express.json());
 
