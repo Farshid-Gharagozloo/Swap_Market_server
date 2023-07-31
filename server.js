@@ -9,6 +9,8 @@ app.use(cors());
 const productRoutes = require('./routes/productRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const listRoutes = require('./routes/listRoutes');
+const messageRoutes = require('./routes/messageRoutes');
+
 
 app.use(express.static('public'));
 
@@ -22,6 +24,8 @@ app.get('/', (_req, res) => res.send('Having a home is awesome!'));
 app.use('/product', productRoutes);
 app.use('/profile', profileRoutes);
 app.use('/list', listRoutes);
+app.use('/message', messageRoutes);
+
 
 const server = app.listen(PORT, HOST, () => {
     const { address, port } = server.address();

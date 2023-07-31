@@ -43,8 +43,7 @@ const addProfileUser = async (req, res) => {
     try {
         req.body.password = bcrypt.hashSync(req.body.password, 10) 
         const addUser = await knex('user').insert(req.body);
-        // console.log(addUser[0][0]);
-/////////////
+       
         knex('user')
         .where({ user_name: req.body.user_name})
         .then((users) => {
@@ -65,9 +64,6 @@ const addProfileUser = async (req, res) => {
             res.json({ token , user_id:user.id });
         })
 
-
-///////////////
-        // return res.status(201).send('Successful');
     } catch (error) {
         console.log(error);
         return res.status(500).send('Error: failed!');
